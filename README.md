@@ -7,8 +7,8 @@ Please **don't** copy for students in the same course and especially same lab se
 2. Read a text file, and accept the pattern (string) from user.
 3. Show the pattern matching in every step.
 4. Run your program for different cases.
-  * Best Case
-  * Average Case, 
+  * Best Case, no matches.
+  * Average Case, *some where in between.*
   * Worst Case, pattern is length of one *or* matched at every index.
 5. Report - running time vs input size, n.
   * Write a function to simulate and write the input size and running time to a text file (csv format)
