@@ -5,7 +5,7 @@ using namespace std;
 
 int main() {
     
-    BoyerMoore test("sasdasda", "asda");
+    BoyerMoore test("asdasdasda", "asda");
     test.printLocations();
     
     return 0;

@@ -10,7 +10,7 @@ class MatchTable {
     
 private:
     
-    static const int ascii = 128;
+    static const int non = 32, ascii = 128 - non;
     int table[ascii];
     
     void init(const string&);

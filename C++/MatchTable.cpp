@@ -28,8 +28,8 @@ MatchTable::~MatchTable() {
  */
 int MatchTable::skip(char character) const {
     
-    int key = (int) character;
-    if (key < 0 || key > ascii) throw new out_of_range("Not an ASCII character");
+    int key = (int) character - non;
+    if (key < 0 || key >= ascii) throw new out_of_range("Not a printable ASCII character");
     
     return this->table[key];
 }
@@ -44,8 +44,8 @@ void MatchTable::init(const string &pattern) {
     
     for (int i = 0; i < (int) pattern.size() - 1; ++i) {
         
-        int key = (int) pattern[i];
-        if (key < 0 || key > ascii) throw new out_of_range("Not an ASCII character");
+        int key = (int) pattern[i] - non;
+        if (key < 0 || key >= ascii) throw new out_of_range("Not a printable ASCII character");
         
         this->table[key] = (int) pattern.size() - i - 1;
     }
