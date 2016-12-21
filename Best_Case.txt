@@ -43,5 +43,5 @@ Best Case Analysis using example
 	        0 -> break, increment 3
 
 	This results in 3 comparisons,
-	which is 9 / 3 = 3 => n / m (integer division)
-	Therefore, Omega(n/m)
+	which is 9 / 3 = 3 => floor(n / m)
+	Therefore, Omega(n / m)
