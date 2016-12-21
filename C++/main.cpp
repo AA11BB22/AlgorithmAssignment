@@ -38,7 +38,7 @@ void plainTest() {
     
     BoyerMoore test(input, pattern);
     test.printLocations();
-    test.simulate();
+    if (input.size() <= 60) test.simulate();
 }
 
 
@@ -66,7 +66,7 @@ void fileTest() {
         
         BoyerMoore test(text, input);
         test.printLocations();
-        test.simulate();
+        if (text.size() <= 60) test.simulate();
     }
     else {
         

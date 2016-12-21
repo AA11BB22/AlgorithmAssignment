@@ -72,7 +72,9 @@ void BoyerMoore::printLocations() const {
     for (int i = 0; i < size; ++i) {
         
         none = false;
-        cout << matchLocations[i] << ", ";
+        cout << matchLocations[i];
+        
+        if (i < size - 1) cout << ", ";
     }
     if (none) cout << " NULL";
     cout << endl;
