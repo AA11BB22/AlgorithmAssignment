@@ -8,7 +8,7 @@
 MatchTable::MatchTable(const string &pattern) {
     
     this->pattern = pattern;
-    fill_n(this->table, ascii, pattern.size());
+    fill_n(this->table, ascii, (int) pattern.size());
     this->init();
 }
 
@@ -62,7 +62,7 @@ void MatchTable::print() const {
     
     int unique = 0;
     for (int i = 0; i < ascii; ++i)
-        if (table[i] < pattern.size())
+        if (table[i] < (int) pattern.size())
             ++unique;
     
     for (int i = 0; i <= unique; ++i) cout << "+---";
@@ -78,7 +78,7 @@ void MatchTable::print() const {
     cout << "+\n|";
     
     for (int i = 0; i < ascii; ++i)
-        if (table[i] < pattern.size())
+        if (table[i] < (int) pattern.size())
             printf("%3d|", table[i]);
     
     printf("%3d|\n", (int) pattern.size());

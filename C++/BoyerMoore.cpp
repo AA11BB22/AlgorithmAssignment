@@ -94,12 +94,8 @@ void BoyerMoore::run() {
             if (text[j] != pattern[t]) break;
         }
         
-        if (t == -1) {
-            
-            push_back(i - (int) pattern.size() + 1);
-            ++i;
-        }
-        else i += table->skip(text[i]);
+        if (t == -1) push_back(i - (int) pattern.size() + 1);
+        i += table->skip(text[i]);
     }
 }
 
@@ -127,11 +123,21 @@ void BoyerMoore::simulate() const {
             
             if (text[j] != pattern[t]) break;
         }
+        if (t == -1) cout << "   ** Match Found **\n" << endl;
         
-        if (t == -1) {
-            cout << "   Match Found\n" << endl;
-            ++i;
-        }
-        else i += table->skip(text[i]);
+        i += table->skip(text[i]);
     }
+    
+    cout << "\nStats:\n";
+    cout << "+---+---+\n";
+    cout << "| n |";
+    printf("%3d|\n", (int) text.size());
+    cout << "+---+---+\n";
+    cout << "| m |";
+    printf("%3d|\n", (int) pattern.size());
+    cout << "+---+---+\n";
+    
+    cout << "\nwhere n is the length of text.";
+    cout << "\n      m is the length of pattern.";
+    cout << "\n\nTotal operations = " << (c-1) << endl;
 }

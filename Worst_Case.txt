@@ -37,9 +37,7 @@ Input:	text, n, pattern, m
 			t <- t - 1				n * m
 		if t = -1 then					n
 			match					n
-			i <- i + 1				n
-		else						n
-			i <- i + table[text[i]]		n
+		i <- i + table[text[i]]			n
 								O(n * m)
 
 

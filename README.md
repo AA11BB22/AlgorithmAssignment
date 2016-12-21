@@ -14,3 +14,6 @@ Please **don't** copy for students in the same course and especially same lab se
   * Write a function to simulate and write the input size and running time to a text file (csv format)
   * Use R to read the text file, generate a scatterplot and add a regression line (if possible).
 6. Prepare for presentation.
+
+## Disclaimer
+* An error will occur if there is a \ in the input as \ is a special character for C++.
