@@ -58,7 +58,7 @@ void MatchTable::init() {
  */
 void MatchTable::print() const {
     
-    cout << "\nTable:\n\n";
+    cout << "\nTable:\n";
     
     int unique = 0;
     for (int i = 0; i < ascii; ++i)

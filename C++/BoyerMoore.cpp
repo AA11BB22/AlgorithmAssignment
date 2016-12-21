@@ -110,9 +110,11 @@ void BoyerMoore::simulate() const {
     table->print();
     
     int c = 1;
-    cout << "\nSimulating:\n\n";
+    cout << "\nSimulating:\n";
     for (int i = (int) pattern.size() - 1; i < (int) text.size(); ++c) {
         
+        string pause;
+        getline(cin, pause);
         cout << c << ". " << this->text << endl;
         for (int j = 10; j <= c; j *= 10) cout << " ";
         for (int j = 0; j <= i - (int) pattern.size() + 3; ++j) cout << " ";
@@ -124,7 +126,10 @@ void BoyerMoore::simulate() const {
             if (text[j] != pattern[t]) break;
         }
         
-        if (t == -1) ++i;
+        if (t == -1) {
+            cout << "   Match Found\n" << endl;
+            ++i;
+        }
         else i += table->skip(text[i]);
     }
 }
