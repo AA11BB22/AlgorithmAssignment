@@ -58,7 +58,7 @@ void fileTest() {
         while (getline(file, input)) text = text + input;
         
         for (int i = 0; i < text.size(); ++i)
-            if ((int) text[i] < 32 || (int) text[i] > 127)
+            if ((int) text[i] < 32 || (int) text[i] >= 127)
                 text[i] = ' ';
         
         cout << "Enter pattern ==> ";

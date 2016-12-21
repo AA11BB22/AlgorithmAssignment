@@ -11,7 +11,7 @@ class MatchTable {
     
 private:
     
-    static const int non = 32, ascii = 128 - non;
+    static const int non = 32, ascii = 127 - non;
     int table[ascii];
     string pattern;
     
