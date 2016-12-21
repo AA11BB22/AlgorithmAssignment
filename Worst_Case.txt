@@ -43,6 +43,4 @@ Input:	text, n, pattern, m
 
 Therefore, we can conclude that Boyer Moore’s worst case is as bad as the naive method.
 Boyer Moore’s algorithm would cost more operations and memory for the need of constructing the mismatch table.
-			
-		
 		
