@@ -100,3 +100,31 @@ void BoyerMoore::run() {
         else i += table->skip(text[i]);
     }
 }
+
+
+/** Function to display the running algorithm
+ *
+ */
+void BoyerMoore::simulate() const {
+    
+    table->print();
+    
+    int c = 1;
+    cout << "\nSimulating:\n\n";
+    for (int i = (int) pattern.size() - 1; i < (int) text.size(); ++c) {
+        
+        cout << c << ". " << this->text << endl;
+        for (int j = 10; j <= c; j *= 10) cout << " ";
+        for (int j = 0; j <= i - (int) pattern.size() + 3; ++j) cout << " ";
+        cout << pattern << endl << endl;
+        
+        int t = (int) pattern.size() - 1;
+        for (int j = i; j > i - (int) pattern.size(); --j, --t) {
+            
+            if (text[j] != pattern[t]) break;
+        }
+        
+        if (t == -1) ++i;
+        else i += table->skip(text[i]);
+    }
+}

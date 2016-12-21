@@ -23,6 +23,7 @@ public:
     ~BoyerMoore();
     
     void printLocations() const;
+    void simulate() const;
     
 };
 

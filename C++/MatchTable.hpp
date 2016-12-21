@@ -2,6 +2,7 @@
 #define MatchTable_hpp
 
 #include <iostream>
+#include <cstdio>
 #include <string>
 
 using namespace std;
@@ -12,8 +13,9 @@ private:
     
     static const int non = 32, ascii = 128 - non;
     int table[ascii];
+    string pattern;
     
-    void init(const string&);
+    void init();
     
 public:
     
@@ -21,6 +23,7 @@ public:
     ~MatchTable();
     
     int skip(char) const;
+    void print() const;
 };
 
 #endif /* MatchTable_hpp */

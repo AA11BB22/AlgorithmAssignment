@@ -7,8 +7,9 @@
  */
 MatchTable::MatchTable(const string &pattern) {
     
+    this->pattern = pattern;
     fill_n(this->table, ascii, pattern.size());
-    this->init(pattern);
+    this->init();
 }
 
 
@@ -40,7 +41,7 @@ int MatchTable::skip(char character) const {
  * Input: pattern, the string to be matched.
  *
  */
-void MatchTable::init(const string &pattern) {
+void MatchTable::init() {
     
     for (int i = 0; i < (int) pattern.size() - 1; ++i) {
         
@@ -49,4 +50,39 @@ void MatchTable::init(const string &pattern) {
         
         this->table[key] = (int) pattern.size() - i - 1;
     }
+}
+
+
+/** Function to print the keys and its corresponding skip value in a table.
+ *
+ */
+void MatchTable::print() const {
+    
+    cout << "\nTable:\n\n";
+    
+    int unique = 0;
+    for (int i = 0; i < ascii; ++i)
+        if (table[i] < pattern.size())
+            ++unique;
+    
+    for (int i = 0; i <= unique; ++i) cout << "+---";
+    cout << "+\n|";
+    
+    for (int i = 0; i < ascii; ++i)
+        if (table[i] < (int) pattern.size())
+            cout << " " << (char) (i + 32) << " |";
+    
+    cout << " * |\n";
+    
+    for (int i = 0; i <= unique; ++i) cout << "+---";
+    cout << "+\n|";
+    
+    for (int i = 0; i < ascii; ++i)
+        if (table[i] < pattern.size())
+            printf("%3d|", table[i]);
+    
+    printf("%3d|\n", (int) pattern.size());
+    
+    for (int i = 0; i <= unique; ++i) cout << "+---";
+    cout << "+\n";
 }

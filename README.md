@@ -5,7 +5,7 @@ Please **don't** copy for students in the same course and especially same lab se
 ## Log
 1. Implement Boyer Moore's String Search Algorithm. **(Done)**
 2. Read a text file, and accept the pattern (string) from user.
-3. Show the pattern matching in every step.
+3. Show the pattern matching in every step. **(Done)**
 4. Run your program for different cases.
   * Best Case, no matches.
   * Average Case, *some where in between.*
