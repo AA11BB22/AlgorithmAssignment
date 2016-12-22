@@ -1,0 +1,47 @@
+Naive String Search (Brute Force) vs Boyer Moore’s String Search
+
+Worst Case Analysis using Asymptotic Analysis
+
+Input:	text, n, pattern, m
+	text, the string to be checked
+	n, the length of text
+	pattern, the pattern to be found
+	m, the length of pattern
+
+
+1. Naive Method (Brute Force):
+
+	for i <- 0 to n-m do					n
+		j <- 0						n
+		for j to m-1 do					n * m
+			if text[i+j] != pattern[j] then	n * m
+				break				n
+		if j = m then					n
+			match					n
+								O(n * m)
+
+2. Boyer Moore’s Method:
+
+	// Create a mismatch table.
+	for i <- 0 to m-2 do					m
+		table[pattern[i]] <- m-i-1			m
+	table[others] <- m					1
+
+	
+	// Boyer Moore’s.
+	i <- m-1						1
+	while i < n do						n
+		t <- m-1					n
+		for j <- i to i-m+1 do				n * m
+			if text[j] != pattern[t] then 		n * m
+				break				n
+			t <- t - 1				n * m
+		if t = -1 then					n
+			match					n
+		i <- i + table[text[i]]			n
+								O(n * m)
+
+
+Therefore, we can conclude that Boyer Moore’s worst case is as bad as the naive method.
+Boyer Moore’s algorithm would cost more operations and memory for the need of constructing the mismatch table.
+		
