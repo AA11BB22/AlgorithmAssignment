@@ -11,12 +11,13 @@ Input:	text, n, pattern, m
 
 1. Naive Method (Brute Force):
 
-	for i <- 0 to n-m-1 do					n
-		for j <- i to m-1 do				n * m
+	for i <- 0 to n-m do					n
+		j <- 0						n
+		for j to m-1 do					n * m
 			if text[i+j] != pattern[j] then	n * m
 				break				n
-			if j = m-1 then				n * m
-				match				n
+		if j = m then					n
+			match					n
 								O(n * m)
 
 2. Boyer Moore’s Method:
@@ -31,7 +32,7 @@ Input:	text, n, pattern, m
 	i <- m-1						1
 	while i < n do						n
 		t <- m-1					n
-		for j <- i to i-m-1 do				n * m
+		for j <- i to i-m+1 do				n * m
 			if text[j] != pattern[t] then 		n * m
 				break				n
 			t <- t - 1				n * m
