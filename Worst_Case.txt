@@ -13,7 +13,7 @@ Input:	text, n, pattern, m
 
 	for i <- 0 to n-m-1 do					n
 		for j <- i to m-1 do				n * m
-			if text[i] != pattern[j] then		n * m
+			if text[i+j] != pattern[j] then	n * m
 				break				n
 			if j = m-1 then				n * m
 				match				n
