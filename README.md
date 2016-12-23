@@ -12,7 +12,7 @@ Please **don't** copy for students in the same course and especially same lab se
   * Worst Case, pattern is length of one *or* matched at every index. **(Done)**
 5. Report - running time vs input size, n. **(Done)**
   * Write a function to simulate and write the input size and running time to a text file (csv format) **(Done)**
-  * Use R to read the text file, generate a scatterplot and add a regression line (if possible). **(Done)**
+  * Use R to read the text file, generate line plot and add a regression line (if possible). **(Done)**
 6. Prepare for presentation. **(Done)**
 
 ## Disclaimer
