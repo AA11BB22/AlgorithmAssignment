@@ -20,7 +20,6 @@ private:
 public:
     
     MatchTable(const string&);
-    ~MatchTable();
     
     int skip(char) const;
     void print() const;

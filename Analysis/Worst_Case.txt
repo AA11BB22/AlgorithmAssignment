@@ -38,10 +38,9 @@ Input:	text, n, pattern, m
 			t <- t - 1				n * m
 		if t = -1 then					n
 			match					n
-		i <- i + table[text[i]]				n
+		i <- i + table[text[i]]			n
 								O(n * m)
 
 
 Therefore, we can conclude that Boyer Moore’s worst case is as bad as the naive method.
 Boyer Moore’s algorithm would cost more operations and memory for the need of constructing the mismatch table.
-		

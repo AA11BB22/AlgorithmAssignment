@@ -13,14 +13,6 @@ MatchTable::MatchTable(const string &pattern) {
 }
 
 
-/** Empty Destructor.
- *
- */
-MatchTable::~MatchTable() {
-    
-}
-
-
 /** Function to get the skip value.
  *
  * Input: character, the character for finding its skip value.

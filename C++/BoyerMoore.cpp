@@ -81,7 +81,7 @@ void BoyerMoore::printLocations() const {
 }
 
 
-/** Function to run Boyer Moore's String Search Algorithm.
+/** Function to run Boyer-Moore String Search Algorithm.
  *
  */
 void BoyerMoore::run() {
