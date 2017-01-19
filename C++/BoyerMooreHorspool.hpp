@@ -1,28 +1,28 @@
-#ifndef BoyerMoore_hpp
-#define BoyerMoore_hpp
+#ifndef BoyerMooreHorspool_hpp
+#define BoyerMooreHorspool_hpp
 
 #include <iostream>
 #include <string>
-#include "LastOccurenceTable.hpp"
+#include "MatchTable.hpp"
 
 using namespace std;
 
-class BoyerMoore {
+class BoyerMooreHorspool {
     
 private:
     
     int matchSize, size;
     int* matchLocations;
     string text, pattern;
-    LastOccurenceTable* table;
+    MatchTable* table;
     
     void run();
     void push_back(const int&);
     
 public:
     
-    BoyerMoore(const string &input, const string &pattern);
-    ~BoyerMoore();
+    BoyerMooreHorspool(const string &input, const string &pattern);
+    ~BoyerMooreHorspool();
     
     void printLocations() const;
     void simulate() const;

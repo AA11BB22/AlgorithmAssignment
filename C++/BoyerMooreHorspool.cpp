@@ -1,4 +1,4 @@
-#include "BoyerMoore.hpp"
+#include "BoyerMooreHorspool.hpp"
 
 /** Constructor.
  *
@@ -6,14 +6,14 @@
  *        pattern, the pattern to be found.
  *
  */
-BoyerMoore::BoyerMoore(const string &input, const string &pattern) {
+BoyerMooreHorspool::BoyerMooreHorspool(const string &input, const string &pattern) {
     
     this->matchSize = 10;
     this->size = 0;
     this->matchLocations = new int[matchSize];
     this->text = input;
     this->pattern = pattern;
-    this->table = new LastOccurenceTable(pattern);
+    this->table = new MatchTable(pattern);
     
     this->run();
 }
@@ -22,7 +22,7 @@ BoyerMoore::BoyerMoore(const string &input, const string &pattern) {
 /** Destructor to free memory.
  *
  */
-BoyerMoore::~BoyerMoore() {
+BoyerMooreHorspool::~BoyerMooreHorspool() {
     
     delete this->matchLocations;
     this->matchLocations = nullptr;
@@ -37,7 +37,7 @@ BoyerMoore::~BoyerMoore() {
  * Input: index, an integer
  *
  */
-void BoyerMoore::push_back(const int &index) {
+void BoyerMooreHorspool::push_back(const int &index) {
     
     if (matchSize == 0) ++matchSize;
     
@@ -65,7 +65,7 @@ void BoyerMoore::push_back(const int &index) {
 /** Function to print the first index locations where the pattern matches.
  *
  */
-void BoyerMoore::printLocations() const {
+void BoyerMooreHorspool::printLocations() const {
     
     bool none = true;
     cout << "Matched at locations: ";
@@ -84,31 +84,18 @@ void BoyerMoore::printLocations() const {
 /** Function to run Boyer-Moore String Search Algorithm.
  *
  */
-void BoyerMoore::run() {
+void BoyerMooreHorspool::run() {
     
-    int i = (int) pattern.size() - 1;
-    int j = (int) pattern.size() - 1;
-    
-    while (i <= text.size() - 1) {
+    for (int i = (int) pattern.size() - 1; i < (int) text.size(); ) {
         
-        // If last character match, go back and check all.
-        if (text[i] == pattern[j]) {
+        int t = (int) pattern.size() - 1;
+        for (int j = i; j > i - (int) pattern.size(); --j, --t) {
             
-            if (j == 0) {
-                push_back(i);
-                i = i + (int) pattern.size() - min(j, table->skip(text[i]) + 1);
-                j = (int) pattern.size() - 1;
-            }
-            else {
-                --i;
-                --j;
-            }
+            if (text[j] != pattern[t]) break;
         }
-        // If mismatch. (jump and reset j)
-        else {
-            i = i + (int) pattern.size() - min(j, table->skip(text[i]) + 1);
-            j = (int) pattern.size() - 1;
-        }
+        
+        if (t == -1) push_back(i - (int) pattern.size() + 1);
+        i += table->skip(text[i]);
     }
 }
 
@@ -116,47 +103,29 @@ void BoyerMoore::run() {
 /** Function to display the running algorithm
  *
  */
-void BoyerMoore::simulate() const {
+void BoyerMooreHorspool::simulate() const {
     
     table->print();
     
     int c = 1;
     cout << "\nSimulating:\n";
-    
-    int i = (int) pattern.size() - 1;
-    int j = (int) pattern.size() - 1;
-    
-    bool print = true;
-    while (i <= text.size() - 1) {
+    for (int i = (int) pattern.size() - 1; i < (int) text.size(); ++c) {
         
-        if (print) {
-            string pause;
-            getline(cin, pause);
-            cout << c << ". " << this->text << endl;
-            for (int k = 10; k <= c; k *= 10) cout << " ";
-            for (int k = 0; k <= i - (int) pattern.size() + 3; ++k) cout << " ";
-            cout << pattern << endl << endl;
-        }
+        string pause;
+        getline(cin, pause);
+        cout << c << ". " << this->text << endl;
+        for (int j = 10; j <= c; j *= 10) cout << " ";
+        for (int j = 0; j <= i - (int) pattern.size() + 3; ++j) cout << " ";
+        cout << pattern << endl << endl;
         
-        if (text[i] == pattern[j]) {
-            if (j == 0) {
-                print = true;
-                cout << "   ** Match Found **\n" << endl;
-                i = i + (int) pattern.size() - min(j, table->skip(text[i]) + 1);
-                j = (int) pattern.size() - 1;
-            }
-            else {
-                print = false;
-                --i;
-                --j;
-            }
+        int t = (int) pattern.size() - 1;
+        for (int j = i; j > i - (int) pattern.size(); --j, --t) {
+            
+            if (text[j] != pattern[t]) break;
         }
-        else {
-            print = true;
-            i = i + (int) pattern.size() - min(j, table->skip(text[i]) + 1);
-            j = (int) pattern.size() - 1;
-        }
-        if (print) ++c;
+        if (t == -1) cout << "   ** Match Found **\n" << endl;
+        
+        i += table->skip(text[i]);
     }
     
     cout << "\nStats:\n";

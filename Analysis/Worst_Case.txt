@@ -1,4 +1,4 @@
-Naive String Search (Brute Force) vs Boyer Moore’s String Search
+Naive String Search (Brute Force) vs Boyer-Moore-Horspool’s String Search
 
 Worst Case Analysis using Asymptotic Analysis
 
@@ -20,7 +20,7 @@ Input:	text, n, pattern, m
 			match					n
 								O(n * m)
 
-2. Boyer Moore’s Method:
+2. Boyer-Moore-Horspool Method:
 
 	// Create a mismatch table.
 	for i <- 0 to m-2 do					m
@@ -42,5 +42,5 @@ Input:	text, n, pattern, m
 								O(n * m)
 
 
-Therefore, we can conclude that Boyer Moore’s worst case is as bad as the naive method.
-Boyer Moore’s algorithm would cost more operations and memory for the need of constructing the mismatch table.
+Therefore, we can conclude that Boyer-Moore-Horspool’s worst case is as bad as the naive method.
+Boyer-Moore-Horspool’s algorithm would cost more operations and memory for the need of constructing the mismatch table.

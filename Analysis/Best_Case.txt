@@ -1,4 +1,4 @@
-Naive String Search (Brute Force) vs Boyer Moore’s String Search
+Naive String Search (Brute Force) vs Boyer-Moore-Horspool’s String Search
 
 Best Case Analysis using example
 
@@ -20,15 +20,15 @@ Best Case Analysis using example
 	Therefore, Omega(n)
 
 
-2. Boyer Moore’s Method:
+2. Boyer-Moore-Horspool’s Method:
 
 	// Text: ABCABCABC, Pattern: 000
 
-	+——-+——-+
-	| 0 | * |
-	+—--+---+
-	| 1 | 3 |
-	+---+---+
+	+------------+——-+——-+
+	| character  | 0 | * |
+	+------------+—--+---+
+	| skip value | 1 | 3 |
+	+------------+---+---+
 
 	// Table for pattern, 000.
 	// All other characters NOT 0 will be m, the length of the pattern, 3

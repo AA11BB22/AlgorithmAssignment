@@ -13,6 +13,7 @@ Analysis::Analysis(const string& text, const string& pattern) {
     
     this->naiveRun();
     this->boyerMooreRun();
+    this->horspoolRun();
 }
 
 
@@ -43,6 +44,45 @@ void Analysis::boyerMooreRun() {
     
     auto start = chrono::system_clock::now();
     
+    LastOccurenceTable table(this->pattern);
+    
+    int i = m - 1;
+    int j = m - 1;
+    
+    while (i <= n - 1) {
+        
+        if (text[i] == pattern[j]) {
+            
+            if (j == 0) {
+                i = i + m - min(j, table.skip(text[i]) + 1);
+                j = m - 1;
+            }
+            else {
+                --i;
+                --j;
+            }
+        }
+        else {
+            i = i + m - min(j, table.skip(text[i]) + 1);
+            j = m - 1;
+        }
+    }
+    
+    auto end = chrono::system_clock::now();
+    this->boyerMoore = chrono::duration_cast<std::chrono::microseconds>(end - start);
+}
+
+
+
+/** Function to calculate horspoolRun
+ *
+ */
+void Analysis::horspoolRun() {
+    
+    int n = (int) text.length(), m = (int) pattern.length();
+    
+    auto start = chrono::system_clock::now();
+    
     MatchTable table(this->pattern);
     
     int i = m - 1;
@@ -59,8 +99,9 @@ void Analysis::boyerMooreRun() {
     }
     
     auto end = chrono::system_clock::now();
-    this->boyerMoore = chrono::duration_cast<std::chrono::microseconds>(end - start);
+    this->horspool = chrono::duration_cast<std::chrono::microseconds>(end - start);
 }
 
 chrono::duration<double, micro> Analysis::naiveTime() { return this->naive; }
 chrono::duration<double, micro> Analysis::boyerMooreTime() { return this->boyerMoore; }
+chrono::duration<double, micro> Analysis::horspoolTime() { return this->horspool; }
