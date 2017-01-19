@@ -20,7 +20,7 @@ Best Case Analysis using example
 	Therefore, Omega(n)
 
 
-2. Boyer-Moore and oyer-Moore-Horspool’s Method:
+2. Boyer-Moore and Boyer-Moore-Horspool’s Method:
 
 	// Text: ABCABCABC, Pattern: 000
 
