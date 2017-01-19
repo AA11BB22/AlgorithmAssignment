@@ -96,7 +96,7 @@ void BoyerMoore::run() {
             
             if (j == 0) {
                 push_back(i);
-                i = i + (int) pattern.size() - min(j, table->skip(text[i]) + 1);
+                i = i + (int) pattern.size();
                 j = (int) pattern.size() - 1;
             }
             else {
@@ -142,7 +142,7 @@ void BoyerMoore::simulate() const {
             if (j == 0) {
                 print = true;
                 cout << "   ** Match Found **\n" << endl;
-                i = i + (int) pattern.size() - min(j, table->skip(text[i]) + 1);
+                i = i + (int) pattern.size();
                 j = (int) pattern.size() - 1;
             }
             else {

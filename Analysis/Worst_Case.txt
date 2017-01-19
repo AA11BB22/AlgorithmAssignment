@@ -20,15 +20,38 @@ Input:	text, n, pattern, m
 			match					n
 								O(n * m)
 
-2. Boyer-Moore-Horspool Method:
+
+2. Boyer-Moore Method:
+
+	// Create last occurrence table.
+	for i <- 0 to m-1 do					m
+		table[pattern[i] <- i				m
+	table[others] <- -1
+
+	i <- m-1						1
+	j <- m-1						1
+
+	while i < n do						n
+		if text[i] = pattern[j] then			n
+			if j = 0 then				n
+				match				n
+			else					n
+				i <- i - 1			n * m
+				j <- j - 1			n * m
+		else						n
+			i = i + m - min(j, table[text[i]]+1)	n
+			j = m - 1				n
+								O(n * m)
+
+
+3. Boyer-Moore-Horspool Method:
 
 	// Create a mismatch table.
 	for i <- 0 to m-2 do					m
 		table[pattern[i]] <- m-i-1			m
-	table[others] <- m					1
+	table[others] <- m					
 
 	
-	// Boyer Moore’s.
 	i <- m-1						1
 	while i < n do						n
 		t <- m-1					n
@@ -40,6 +63,7 @@ Input:	text, n, pattern, m
 			match					n
 		i <- i + table[text[i]]			n
 								O(n * m)
+
 
 
 Therefore, we can conclude that Boyer-Moore-Horspool’s worst case is as bad as the naive method.

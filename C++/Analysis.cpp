@@ -49,12 +49,12 @@ void Analysis::boyerMooreRun() {
     int i = m - 1;
     int j = m - 1;
     
-    while (i <= n - 1) {
+    while (i < n) {
         
         if (text[i] == pattern[j]) {
             
             if (j == 0) {
-                i = i + m - min(j, table.skip(text[i]) + 1);
+                i = i + m;
                 j = m - 1;
             }
             else {

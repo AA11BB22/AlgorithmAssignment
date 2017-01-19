@@ -20,7 +20,7 @@ Best Case Analysis using example
 	Therefore, Omega(n)
 
 
-2. Boyer-Moore-Horspool’s Method:
+2. Boyer-Moore and oyer-Moore-Horspool’s Method:
 
 	// Text: ABCABCABC, Pattern: 000
 
@@ -34,13 +34,13 @@ Best Case Analysis using example
 	// All other characters NOT 0 will be m, the length of the pattern, 3
 
 	ABCABCABC
-	  0 -> break, increment m times, 3
+	  0 -> increment m times, 3
 
 	ABCABCABC
-	     0 -> break, increment 3
+	     0 -> increment 3
 
 	ABCABCABC
-	        0 -> break, increment 3
+	        0 -> increment 3
 
 	This results in 3 comparisons,
 	which is 9 / 3 = 3 => floor(n / m)
