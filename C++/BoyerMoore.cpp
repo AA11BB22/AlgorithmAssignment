@@ -89,7 +89,7 @@ void BoyerMoore::run() {
     int i = (int) pattern.size() - 1;
     int j = (int) pattern.size() - 1;
     
-    while (i <= text.size() - 1) {
+    while (i < text.size()) {
         
         // If last character match, go back and check all.
         if (text[i] == pattern[j]) {
@@ -127,7 +127,7 @@ void BoyerMoore::simulate() const {
     int j = (int) pattern.size() - 1;
     
     bool print = true;
-    while (i <= text.size() - 1) {
+    while (i < text.size()) {
         
         if (print) {
             string pause;
